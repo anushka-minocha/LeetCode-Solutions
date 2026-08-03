@@ -1,0 +1,20 @@
+// Time Complexity : O(n * (n+1) / 2 )
+// Space Complexity : O(n * (n+1) / 2 )
+
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>> vec;
+        for(int i = 1; i <= numRows; i++){
+            vector<int> v;
+            for(int j = 0; j < i; j++){
+                if (j == 0) v.push_back (1);
+                else if (j == i - 1) v.push_back (1);
+                else v.push_back (vec[i - 2][j] + vec[i - 2][j - 1]);
+            }
+            vec.push_back (v);
+        }
+        return vec;
+        
+    }
+};
